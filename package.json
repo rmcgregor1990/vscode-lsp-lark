@@ -6,7 +6,7 @@
   "license": "MIT",
   "version": "0.1.0",
   "engines": {
-    "vscode": "^1.22.0"
+    "vscode": "^1.43.0"
   },
   "categories": [
     "Other"
@@ -16,17 +16,17 @@
   ],
   "contributes": {
     "languages": [
-			{
-				"id": "lark-json",
-				"aliases": [
-					"lark-json"
-				],
-				"extensions": [
-					".lark-json"
-				],
-				"configuration": "./language-configuration.json"
-			}
-		],
+      {
+        "id": "lark-json",
+        "aliases": [
+          "lark-json"
+        ],
+        "extensions": [
+          ".lark-json"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
     "configuration": {
       "type": "object",
       "title": "Json Server Configuration",
@@ -41,21 +41,17 @@
   },
   "main": "./client/out/extension",
   "scripts": {
-    "vscode:prepublish": "tsc -p ./",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "postinstall": "node ./node_modules/vscode/bin/install",
-    "vscode": "npm run vscode:prepublish && VSCODE=$(which code-insiders || which code || echo echo ERROR: neither the code nor code-insiders vscode executable is installed); USER=dummy-dont-share-vscode-instance $VSCODE --user-data-dir=$PWD/.vscode-dev/user-data --extensionHomePath=$PWD/.vscode-dev/extensions --extensionDevelopmentPath=$PWD $*"
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -b",
+    "watch": "tsc -b -w",
+    "postinstall": "cd client && npm install && cd ..",
+    "package": "vsce package --out rpcgen_tools.vsix"
   },
   "devDependencies": {
-    "@types/node": "^12.12.6",
-    "tslint": "^6.1.1",
-    "tslint-microsoft-contrib": "^6.2.0",
-    "tsutils": "^3.17.1",
-    "typescript": "^3.8.3",
-    "vscode": "^1.1.36"
-  },
-  "dependencies": {
-    "vscode-languageclient": "^5.2.1"
+    "vsce": "^1.77.0",
+    "@types/node": "^12.11.7",
+    "eslint": "^6.4.0",
+    "@typescript-eslint/parser": "^2.3.0",
+    "typescript": "^3.8.3"
   }
 }
