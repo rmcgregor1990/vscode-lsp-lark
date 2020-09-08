@@ -1,0 +1,61 @@
+{
+  "name": "vscode-lsp-lark",
+  "description": "Simple json extension example",
+  "author": "N/A",
+  "repository": "https://github.com/rmcgregor1990/vscode-lsp-lark",
+  "license": "MIT",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.22.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:lark-json"
+  ],
+  "contributes": {
+    "languages": [
+			{
+				"id": "lark-json",
+				"aliases": [
+					"lark-json"
+				],
+				"extensions": [
+					".lark-json"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+    "configuration": {
+      "type": "object",
+      "title": "Json Server Configuration",
+      "properties": {
+        "jsonServer.exampleConfiguration": {
+          "scope": "resource",
+          "type": "string",
+          "default": "You can override this message."
+        }
+      }
+    }
+  },
+  "main": "./client/out/extension",
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "vscode": "npm run vscode:prepublish && VSCODE=$(which code-insiders || which code || echo echo ERROR: neither the code nor code-insiders vscode executable is installed); USER=dummy-dont-share-vscode-instance $VSCODE --user-data-dir=$PWD/.vscode-dev/user-data --extensionHomePath=$PWD/.vscode-dev/extensions --extensionDevelopmentPath=$PWD $*"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.6",
+    "tslint": "^6.1.1",
+    "tslint-microsoft-contrib": "^6.2.0",
+    "tsutils": "^3.17.1",
+    "typescript": "^3.8.3",
+    "vscode": "^1.1.36"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^5.2.1"
+  }
+}
