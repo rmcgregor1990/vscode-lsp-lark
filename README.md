@@ -2,7 +2,7 @@
 
 An example vscode language server extension which uses lark to provide diagnostics on json documents with the extension `.lark-json`.
 
-I[pygls](https://github.com/openlawlibrary/pygls) is used provide the language server protocol interface and lark to provide diagnostics.
+[pygls](https://github.com/openlawlibrary/pygls) is used provide the language server protocol interface and lark to provide diagnostics.
 
 This example is heavily based on the pygls [example](https://github.com/openlawlibrary/pygls/tree/master/examples/json-extension) with lark slotted in.
 
